@@ -386,5 +386,6 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
 }
 - (IBAction)clickUsePhotoButton:(id)sender {
+    self.takePhotoFinishedBlock(self.finalImage);
 }
 @end

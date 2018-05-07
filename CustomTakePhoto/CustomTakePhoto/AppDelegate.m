@@ -8,8 +8,9 @@
 
 #import "AppDelegate.h"
 #import "CustomTakePhotoViewController.h"
+#import "CustomTakePhotoViewController.h"
 @interface AppDelegate ()
-
+@property(nonnull,strong)CustomTakePhotoViewController *customTakePhotoViewController;
 @end
 
 @implementation AppDelegate
@@ -18,7 +19,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[CustomTakePhotoViewController alloc]initWithNibName:@"CustomTakePhotoViewController" bundle:nil];
+    self.customTakePhotoViewController =[[CustomTakePhotoViewController alloc]initWithNibName:@"CustomTakePhotoViewController" bundle:nil];
+    self.customTakePhotoViewController.takePhotoFinishedBlock = ^(UIImage *choiceImage) {
+      //此处拿到照片后想干嘛干嘛吧
+    };
+    self.window.rootViewController = self.customTakePhotoViewController;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
